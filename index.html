@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+
+    <title>Frontend Mentor | Interactive card details form</title>
+  </head>
+  <body>
+    <main class="main">
+      <aside class="col-1-side">
+        <div class="card card__front">
+          <img src="./images/bg-card-front.png" alt="#" srcset="" />
+          <div class="card__logo">
+            <img src="./images/favicon-32x32.png" alt="logo" />
+          </div>
+          <h1 class="card__number">0000 0000 0000 0000</h1>
+          <h4 class="card__expire MM">00</h4>
+          <span class="card__expire divide">/</span>
+          <h4 class="card__expire YY">00</h4>
+          <h4 class="card__holder">Jane Appleseed</h4>
+        </div>
+
+        <div class="card card__back">
+          <img src="./images/bg-card-back.png" alt="#" srcset="" />
+          <div class="card__cvc">000</div>
+        </div>
+      </aside>
+
+      <aside class="col-2-main">
+        <form id="form" class="">
+          <div class="cardholder">
+            <label class="form__title cardholder--t">Cardholder Name </label>
+            <input
+              type="text"
+              class="form__input cardholder--i"
+              placeholder="e.g. Jane Appleseed"
+            />
+          </div>
+
+          <div class="cardnumber">
+            <label class="form__title cardnumber--t">Card Number</label
+            ><input
+              type="text"
+              class="form__input cardnumber--i"
+              placeholder="e.g. 1234 5678 9123 0000"
+            />
+          </div>
+
+          <div class="cardexp">
+            <label class="form__title cardexp--t">Exp. Date (MM/YY)</label>
+            <div class="flex">
+              <input
+                type="text"
+                class="form__input cardexp--i"
+                placeholder="MM"
+              />
+
+              <input
+                type="text"
+                class="form__input cardexp--ii"
+                placeholder="YY"
+              />
+            </div>
+          </div>
+
+          <div class="cardcvc">
+            <label class="form__title card__cvc--t">CVC</label
+            ><input
+              type="text"
+              class="form__input card__cvc--i"
+              placeholder="e.g. 123"
+            />
+          </div>
+          <button class="btn btn-sub" type="submit">Confirm</button>
+        </form>
+
+      <!-- Completed state start -->
+
+      <div class="form--submit hidden">
+        <img
+          class="svg__icon"
+          src="./images/icon-complete.svg"
+          alt="Complete"
+        />
+        <h1 class="form--submit-text">Thank you!</h1>
+        <h3 class="form--submit-sub">We've added your card details</h3>
+        <button id="form--btn-continue" class="btn confirm--btn" type="submit">
+          Continue
+        </button>
+      </aside>
+    </main>
+
+    <div class="attribution">
+			Challenge by
+			<a
+				href="https://www.frontendmentor.io?ref=challenge"
+				target="_blank"
+				>Frontend Mentor</a
+			>. Coded by
+			<a href="#">Dedric Smith</a>.
+		</div>
+  </body>
+</html>
