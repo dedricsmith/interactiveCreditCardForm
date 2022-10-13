@@ -207,7 +207,6 @@ function clearForm() {
   cardMth.value = '';
   cardYr.value = '';
   cardCVC.value = '';
-  document.querySelector('.error--txt').innerText = '';
 }
 
 // Listeners

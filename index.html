@@ -25,19 +25,25 @@
     <main class="main">
       <aside class="col-1-side">
         <div class="card card__front">
-          <img src="./images/bg-card-front.png" alt="#" srcset="" />
           <div class="card__logo">
-            <img src="./images/favicon-32x32.png" alt="logo" />
+            <img src="./images/card-logo.svg" alt="logo" />
           </div>
-          <h1 class="card__number">0000 0000 0000 0000</h1>
-          <h4 class="card__expire MM">00</h4>
-          <span class="card__expire divide">/</span>
-          <h4 class="card__expire YY">00</h4>
-          <h4 class="card__holder">Jane Appleseed</h4>
+
+          <div class="card__number">
+            <h1>0000 0000 0000 0000</h1>
+          </div>
+          
+          <div class="card__info">
+            <h4 class="card__holder">Jane Appleseed</h4>
+            <div class="card__expire">
+              <h4 class="card__expire MM">00</h4>
+              <span>/</span>
+              <h4 class="card__expire YY">00</h4>
+          </div>
+          </div>
         </div>
 
         <div class="card card__back">
-          <img src="./images/bg-card-back.png" alt="#" srcset="" />
           <div class="card__cvc">000</div>
         </div>
       </aside>
@@ -103,17 +109,17 @@
         <button id="form--btn-continue" class="btn confirm--btn" type="submit">
           Continue
         </button>
+        
+        <!-- <div class="attribution">
+          Challenge by
+          <a
+            href="https://www.frontendmentor.io?ref=challenge"
+            target="_blank"
+            >Frontend Mentor</a
+          >. Coded by
+          <a href="#">Dedric Smith</a>.
+        </div> -->
       </aside>
     </main>
-
-    <div class="attribution">
-			Challenge by
-			<a
-				href="https://www.frontendmentor.io?ref=challenge"
-				target="_blank"
-				>Frontend Mentor</a
-			>. Coded by
-			<a href="#">Dedric Smith</a>.
-		</div>
   </body>
 </html>

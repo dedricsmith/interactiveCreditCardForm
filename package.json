@@ -2,9 +2,10 @@
   "name": "ccform",
   "version": "1.0.0",
   "description": "![Design preview for the Interactive card details form coding challenge](./design/desktop-preview.jpg)",
-  "main": "script.js",
+  "default": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/dedricsmith/interactiveCreditCardForm/issues"
   },
-  "homepage": "https://github.com/dedricsmith/interactiveCreditCardForm#readme"
+  "homepage": "https://github.com/dedricsmith/interactiveCreditCardForm#readme",
+  "devDependencies": {
+    "parcel": "^2.7.0"
+  }
 }

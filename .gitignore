@@ -17,3 +17,7 @@
 design
 style-guide.md
 .prettierrc
+node_modules
+.parcel-cache
+dist
+._index.html

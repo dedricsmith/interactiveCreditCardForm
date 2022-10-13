@@ -28,7 +28,8 @@ body {
 }
 
 img {
-  position: relative;
+  position: inherit;
+  width: inherit;
 }
 
 input {
@@ -59,67 +60,72 @@ input::placeholder {
 /* Layout */
 .col-1-side {
   height: 100%;
-  flex: 0 0 40%;
-  background-image: url(./images/bg-main-mobile.png);
+  background-image: url(./images/bg-main-desktop.png);
   background-repeat: no-repeat;
   background-size: cover;
+  flex: 1 1 45%;
 }
 
 .col-2-main {
   height: 100%;
-  flex: 1;
+  flex: 1 2 55%;
 }
 
-/* Cards */
+/* Cards 44rem max*/
 
 .card {
-  position: relative;
+  width: clamp(36rem, 45rem, 52rem);
+  height: max(20rem, 25rem);
   color: var(--color-white);
-  box-shadow: -5rem 3rem 3rem rgba(0, 0, 0, 0.2);
+  padding: 1.2rem;
+  /* box-shadow: -5rem 3rem 3rem rgba(0, 0, 0, 0.2); */
   border-radius: 2rem;
-  flex: 0 1 45%;
+  letter-spacing: 0.3rem;
 }
 
 .card__front {
-  top: 4rem;
-  left: 5rem;
+  background-image: url('./images/bg-card-front.png');
+  background-size: cover;
+  top: 11%;
+  left: 5%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+  position: absolute;
 }
 
 .card__back {
-  top: 5rem;
-  left: 10rem;
+  background-image: url('./images/bg-card-back.png');
+  background-size: cover;
+  position: absolute;
+  top: 49%;
+  left: 11%;
 }
 
-.card__logo {
-  position: absolute;
-  top: 3rem;
-  left: 2rem;
+.card__info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .card__number {
-  position: absolute;
-  top: 14rem;
-  left: 4rem;
   font-weight: bold;
-  font-size: 2.4rem;
-  letter-spacing: 5px;
+  font-size: clamp(1.6rem, 1.8rem, 2rem);
 }
 
 .card__holder {
-  position: absolute;
   text-transform: uppercase;
   top: 20rem;
   left: 4rem;
   font-size: 1rem;
-  letter-spacing: 3px;
 }
 
 .card__expire {
-  position: absolute;
   top: 20rem;
   left: 35rem;
-  font-size: 1rem;
-  letter-spacing: 3px;
+  display: flex;
 }
 
 .MM {
@@ -137,8 +143,8 @@ input::placeholder {
   left: 34rem;
 }
 .card__cvc {
-  position: absolute;
-  top: 11.3rem;
+  position: relative;
+  top: 10.3rem;
   left: 36rem;
   font-size: 1.4rem;
   letter-spacing: 2px;
@@ -158,9 +164,8 @@ form {
 
   grid-row-gap: 8rem;
   grid-column-gap: 9rem;
-
-  min-height: 100vh;
   place-content: center;
+  margin-top: 30%;
 }
 
 .cardholder {
@@ -229,7 +234,7 @@ form {
 
 /* Conformation page */
 .form--submit {
-  min-height: 100vh;
+  margin-top: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -259,85 +264,67 @@ form {
   display: none;
 }
 
-@media (max-width: 375px) {
-}
-
-@media (max-width: 850px) {
-  .card__front {
-    top: 10%;
-    left: 10%;
-    z-index: 4;
-  }
-
-  .card__back {
-    top: 3%;
-    left: 30%;
-  }
-}
-
-@media (max-width: 1060px) {
+@media screen and (max-width: 1020px) {
   .main {
-    width: 100vw;
-    height: 100vh;
     display: flex;
     flex-direction: column;
   }
 
   .col-1-side {
-    display: flex;
-    place-items: center;
-    height: 100%;
-    flex: 0 0 50%;
-    background-image: url(./images/bg-main-desktop.png);
-  }
-
-  .col-2-main {
-    height: 100%;
-    flex: 0 1;
+    background-image: url(./images/bg-main-mobile.png);
   }
 
   .card {
-    color: var(--color-white);
-    box-shadow: -5rem 3rem 3rem rgba(0, 0, 0, 0.2);
-    border-radius: 2rem;
-    flex: 0 1 45%;
+    font-size: 1.2rem;
   }
 
   .card__front {
-    top: 10rem;
-    left: 15rem;
-    z-index: 4;
+    top: 7%;
+    left: 10%;
   }
 
   .card__back {
-    top: 3rem;
-    left: 1rem;
+    top: 3%;
+    left: 37%;
   }
 }
 
-@media (min-width: 1440px) {
+@media screen and (max-width: 600px) {
   .card {
-    position: relative;
-    color: var(--color-white);
-    box-shadow: 1rem 1rem 3rem rgba(0, 0, 0, 0.2);
-    border-radius: 2rem;
-    flex: 0 1 45%;
-  }
-  .col-1-side {
-    height: 100%;
-    flex: 0 0 40%;
-    background-image: url(./images/bg-main-desktop.png);
+    letter-spacing: 0.3rem;
   }
 
   .card__front {
-    position: absolute;
-    top: 12rem;
-    left: 5rem;
+    top: 7%;
+    left: 4%;
   }
 
   .card__back {
-    position: absolute;
-    top: 40rem;
-    left: 10rem;
+    top: 3%;
+    left: 21%;
   }
-} ;
+}
+
+@media screen and (max-width: 450px) {
+  .card {
+    width: 36rem;
+    height: 20rem;
+  }
+  .card__front {
+    top: 17%;
+    left: 2%;
+  }
+  .card__number {
+    font-size: 1.6rem;
+  }
+
+  .card__back {
+    top: 1%;
+    left: 7%;
+  }
+
+  .card__cvc {
+    top: 8.3rem;
+    left: 28rem;
+  }
+}
