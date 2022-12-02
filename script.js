@@ -1,30 +1,35 @@
 'use strict';
-const formInputs = document.querySelectorAll('.form__input');
-const cardName = document.querySelector('.cardholder--i');
-const UIcardName = document.querySelector('.card__holder');
-const cardNum = document.querySelector('.cardnumber--i');
-const UIcardNum = document.querySelector('.card__number');
-const cardMth = document.querySelector('.cardexp--i');
-const UIcardMth = document.querySelector('.MM');
-const cardYr = document.querySelector('.cardexp--ii');
-const UIcardYr = document.querySelector('.YY');
-const cardCVC = document.querySelector('.card__cvc--i');
-const UIcardCVC = document.querySelector('.card__cvc');
+// Inputs
+const cardNameInput = document.querySelector('#form-name-input');
+const cardNumInput = document.querySelector('#form-cardNum-input');
+const cardMthInput = document.querySelector('#form-cardExp-month');
+const cardYrInput = document.querySelector('#form-cardExp-year');
+const cardCVCInput = document.querySelector('#form-cardCVC-input');
+// Display on card
+const UIcardName = document.querySelector('.card-front__name');
+const UIcardNum = document.querySelector('#card-front-num');
+const UIcardMth = document.querySelector('#month');
+const UIcardYr = document.querySelector('#year');
+const UIcardCVC = document.querySelector('.card-back__cvc');
+// Buttons
 const submitBtn = document.querySelector('.btn-sub');
-const confirmBtn = document.querySelector('#form--btn-continue');
+const confirmBtn = document.querySelector('#thanks-btn');
+// Form
 const form = document.querySelector('#form');
-const thankYou = document.querySelector('.form--submit');
+// Thank you page
+const thankYou = document.querySelector('.thanks-page');
 
 // Name Input
 function displayName() {
-  UIcardName.innerText = cardName.value;
-  if (UIcardName.innerText === '')
-    UIcardName.innerText = cardName.ariaPlaceholder;
+  UIcardName.innerText = cardNameInput.value;
+  if (UIcardName.innerText === '') {
+    UIcardName.innerText = 'Jane Appleseed';
+  }
 }
 
 // Update card detials as user fills in form
 function displayNumber() {
-  let cardNumberInput = cardNum.value;
+  let cardNumberInput = cardNumInput.value;
   let cardNumberFormatted = cardNumberInput;
 
   cardNumberFormatted = cardNumberFormatted.substring(0, 19);
@@ -36,57 +41,58 @@ function displayNumber() {
 
   // Seperates into 4 sections
   if (cardNumberInput !== cardNumberFormatted) {
-    cardNum.value = cardNumberFormatted;
+    cardNumInput.value = cardNumberFormatted;
   }
 
-  UIcardNum.innerHTML = cardNum.value;
-  if (cardNum.value === '') {
-    UIcardNum.innerText = cardNum.ariaPlaceholder;
+  UIcardNum.innerHTML = cardNumInput.value;
+  if (cardNumInput.value === '') {
+    UIcardNum.innerText = '0000 0000 0000 0000';
   }
 }
 
 function displayCVC() {
-  let cardCVCFormat = cardCVC.value;
+  let cardCVCFormat = cardCVCInput.value;
 
   cardCVCFormat = cardCVCFormat.substring(0, 3);
-  cardCVC.value = cardCVCFormat;
+  cardCVCInput.value = cardCVCFormat;
 
-  cardCVC.value === ''
+  cardCVCInput.value === ''
     ? (UIcardCVC.innerText = '000')
-    : (UIcardCVC.innerHTML = cardCVC.value);
+    : (UIcardCVC.innerHTML = cardCVCInput.value);
 }
 
 function displayYear() {
-  let cardYrFormat = cardYr.value;
+  let cardYrFormat = cardYrInput.value;
 
   cardYrFormat = cardYrFormat.substring(0, 2);
-  cardYr.value = cardYrFormat;
+  cardYrInput.value = cardYrFormat;
 
-  cardYr.value === ''
+  cardYrInput.value === ''
     ? (UIcardYr.innerText = '00')
-    : (UIcardYr.innerHTML = cardYr.value);
+    : (UIcardYr.innerHTML = cardYrInput.value);
 }
 
 function displayMonth() {
-  let cardMMFormat = cardMth.value;
+  let cardMMFormat = cardMthInput.value;
 
   cardMMFormat = cardMMFormat.substring(0, 2);
-  cardMth.value = cardMMFormat;
+  cardMthInput.value = cardMMFormat;
 
-  cardMth.value === ''
+  cardMthInput.value === ''
     ? (UIcardMth.innerText = '00')
-    : (UIcardMth.innerHTML = cardMth.value);
+    : (UIcardMth.innerHTML = cardMthInput.value);
 }
 
 // Check if input is blank
 function validateInputs() {
-  const cardName_Val = cardName.value;
-  const cardNumber_Val = cardNum.value;
-  const cardMonth_Val = cardMth.value;
-  const cardYear_Val = cardYr.value;
-  const cardCVC_Val = cardCVC.value;
+  const cardName_Val = cardNameInput.value;
+  const cardNumber_Val = cardNumInput.value;
+  const cardMonth_Val = cardMthInput.value;
+  const cardYear_Val = cardYrInput.value;
+  const cardCVC_Val = cardCVCInput.value;
   const regEx = /^[0-9]+$/;
 
+  // Creates error message
   let htmlFormat = `
   <p class="error--txt">Wrong format, numbers only</p>
   `;
@@ -95,11 +101,10 @@ function validateInputs() {
   `;
 
   function validateName() {
-    const nameInputBox = document.querySelector('.cardholder--i');
-
+    const nameInputBox = document.querySelector('#form-name-input');
     if (cardName_Val === '') {
       document
-        .querySelector('.cardholder')
+        .querySelector('.form-name__container')
         .insertAdjacentHTML('beforeend', htmlBlank);
 
       nameInputBox.classList.add('error');
@@ -112,8 +117,7 @@ function validateInputs() {
   }
 
   function validateNumber() {
-    const numberInputBox = document.querySelector('.cardnumber--i');
-
+    const numberInputBox = document.querySelector('#form-cardNum-input');
     if (!regEx.test(cardNumber_Val)) {
       document
         .querySelector('.cardnumber')
@@ -127,12 +131,15 @@ function validateInputs() {
         document.querySelector('.error--txt').remove();
         numberInputBox.classList.remove('error');
       }, 3000);
+      return;
+    } else {
+      return true;
     }
   }
 
   function validateExpire() {
-    const monthInputBox = document.querySelector('.cardexp--i');
-    const yearInputBox = document.querySelector('.cardexp--ii');
+    const monthInputBox = document.querySelector('#form-cardExp-month');
+    const yearInputBox = document.querySelector('#form-cardExp-year');
 
     if (!regEx.test(cardMonth_Val)) {
       document
@@ -147,6 +154,8 @@ function validateInputs() {
         document.querySelector('.error--txt').remove();
         monthInputBox.classList.remove('error');
       }, 3000);
+    } else {
+      return true;
     }
 
     if (!regEx.test(cardYear_Val) || cardYear_Val === '') {
@@ -155,12 +164,14 @@ function validateInputs() {
       setTimeout(() => {
         yearInputBox.classList.remove('error');
       }, 3000);
+      return;
+    } else {
+      return true;
     }
   }
 
   function validateCVC() {
-    const cvcInputBox = document.querySelector('.card__cvc--i');
-
+    const cvcInputBox = document.querySelector('#form-cardCVC-input');
     if (!regEx.test(cardCVC_Val)) {
       document
         .querySelector('.cardcvc')
@@ -174,6 +185,9 @@ function validateInputs() {
         document.querySelector('.error--txt').remove();
         cvcInputBox.classList.remove('error');
       }, 3000);
+      return;
+    } else {
+      return true;
     }
   }
 
@@ -183,12 +197,17 @@ function validateInputs() {
   validateCVC();
 
   if (
-    (cardNum.value.length > 0 && cardNum.value.length < 19) ||
-    UIcardNum.innerText === cardNum.ariaPlaceholder ||
-    UIcardName.innerText === cardName.ariaPlaceholder ||
-    UIcardMth.innerText === '00' ||
-    UIcardYr.innerText === '00' ||
-    UIcardCVC.innerText === '000'
+    cardNumInput.value.length > 0 &&
+    cardNumInput.value.length < 19 &&
+    UIcardNum.innerText === cardNumInput.ariaPlaceholder &&
+    UIcardName.innerText === cardNameInput.ariaPlaceholder &&
+    UIcardMth.innerText === '00' &&
+    UIcardYr.innerText === '00' &&
+    UIcardCVC.innerText === '000' &&
+    validateName() !== true &&
+    validateNumber() !== true &&
+    validateExpire() !== true &&
+    validateCVC() !== true
   ) {
     return false;
   } else {
@@ -196,45 +215,45 @@ function validateInputs() {
   }
 }
 
-function clearForm() {
-  UIcardName.innerHTML = cardName.ariaPlaceholder;
-  UIcardNum.innerHTML = cardNum.ariaPlaceholder;
+function resetForm() {
+  UIcardName.innerHTML = 'Jane Appleseed';
+  UIcardNum.innerHTML = '0000 0000 0000 0000';
   UIcardMth.innerHTML = '00';
   UIcardYr.innerHTML = '00';
   UIcardCVC.innerHTML = '000';
-  cardName.value = '';
-  cardNum.value = '';
-  cardMth.value = '';
-  cardYr.value = '';
-  cardCVC.value = '';
+  cardNameInput.value = '';
+  cardNumInput.value = '';
+  cardMthInput.value = '';
+  cardYrInput.value = '';
+  cardCVCInput.value = '';
 }
 
 // Listeners
-cardName.addEventListener('keyup', function () {
+cardNameInput.addEventListener('keyup', function () {
   displayName();
 });
 
-cardNum.addEventListener('keyup', function () {
+cardNumInput.addEventListener('keyup', function () {
   displayNumber();
 });
 
-cardCVC.addEventListener('keyup', function () {
+cardCVCInput.addEventListener('keyup', function () {
   displayCVC();
 });
 
-cardYr.addEventListener('keyup', function () {
+cardYrInput.addEventListener('keyup', function () {
   displayYear();
 });
 
-cardMth.addEventListener('keyup', function () {
+cardMthInput.addEventListener('keyup', function () {
   displayMonth();
 });
 
 submitBtn.addEventListener('click', function (e) {
   e.preventDefault();
-  validateInputs();
   if (validateInputs() === false) {
     e.preventDefault();
+    return;
   }
   if (validateInputs() === true) {
     e.preventDefault();
@@ -246,7 +265,7 @@ submitBtn.addEventListener('click', function (e) {
 // Display form and hide thank you/ Clear all input values
 confirmBtn.addEventListener('click', e => {
   e.preventDefault();
-  clearForm();
+  resetForm();
   thankYou.classList.add('hidden');
   form.classList.remove('hidden');
 });

@@ -14,82 +14,92 @@
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="./images/favicon-32x32.png"
+      href="./images/spiral-g0050907eb_640.png"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/css/mediaQueries.css">
     <script defer src="script.js"></script>
 
-    <title>Frontend Mentor | Interactive card details form</title>
+    <title>Interactive Credit Card Details Form</title>
   </head>
   <body>
-    <main class="main">
-      <aside class="col-1-side">
-        <div class="card card__front">
-          <div class="card__logo">
+    <main class="row">
+      <section class="bg-container">
+        <!-- Card Front -->
+        <div class="card card-front col">
+          <figure>
             <img src="./images/card-logo.svg" alt="logo" />
-          </div>
+          </figure>
 
-          <div class="card__number">
-            <h1>0000 0000 0000 0000</h1>
+          <div class="card-front__number">
+            <h1 id="card-front-num">0000 0000 0000 0000</h1>
           </div>
-          
-          <div class="card__info">
-            <h4 class="card__holder">Jane Appleseed</h4>
-            <div class="card__expire">
-              <h4 class="card__expire MM">00</h4>
+          <!-- Box for card info -->
+          <div class="card-front__info row">
+            <h4 class="card-front__name">Jane Appleseed</h4>
+            <div class="row">
+              <h4 id="month">00</h4>
               <span>/</span>
-              <h4 class="card__expire YY">00</h4>
+              <h4 id="year">00</h4>
           </div>
           </div>
         </div>
 
-        <div class="card card__back">
-          <div class="card__cvc">000</div>
+        <!-- Card Back -->
+        <div class="card card-back">
+          <h4 class="card-back__cvc">000</h4>
         </div>
-      </aside>
+      </section>
 
-      <aside class="col-2-main">
-        <form id="form" class="">
-          <div class="cardholder">
-            <label class="form__title cardholder--t">Cardholder Name </label>
+      <!-- Form starts -->
+      <section class="main-bg--container row">
+        <form id="form" class=" gap-2x" >
+          <!-- Cardholder Name -->
+          <div class="form-name__container col">
+            <label class="form-title ">Cardholder Name </label>
             <input
               type="text"
-              class="form__input cardholder--i"
+              class="form__input"
+              id="form-name-input"
               placeholder="e.g. Jane Appleseed"
             />
           </div>
-
-          <div class="cardnumber">
-            <label class="form__title cardnumber--t">Card Number</label
+          <!-- Card Number -->
+          <div class="cardnumber col">
+            <label class="form-title">Card Number</label
             ><input
               type="text"
-              class="form__input cardnumber--i"
+              id="form-cardNum-input"
+              class="form-input"
               placeholder="e.g. 1234 5678 9123 0000"
             />
           </div>
-
-          <div class="cardexp">
-            <label class="form__title cardexp--t">Exp. Date (MM/YY)</label>
-            <div class="flex">
+          <!-- Card expired box -->
+          <div class="cardexp col">
+            <label class="form-title">Exp. Date (MM/YY)</label>
+            <div class="row gap-2x">
               <input
                 type="text"
-                class="form__input cardexp--i"
+                class="form-input "
+                id="form-cardExp-month"
                 placeholder="MM"
               />
 
               <input
                 type="text"
-                class="form__input cardexp--ii"
+                class="form-input "
+                id="form-cardExp-year"
                 placeholder="YY"
               />
             </div>
           </div>
-
-          <div class="cardcvc">
-            <label class="form__title card__cvc--t">CVC</label
+          <!-- Card CVC -->
+          <div class="cardcvc col">
+            <label class="form-title">CVC</label
             ><input
               type="text"
-              class="form__input card__cvc--i"
+              class="form-input"
+              id="form-cardCVC-input"
               placeholder="e.g. 123"
             />
           </div>
@@ -98,18 +108,20 @@
 
       <!-- Completed state start -->
 
-      <div class="form--submit hidden">
-        <img
-          class="svg__icon"
-          src="./images/icon-complete.svg"
-          alt="Complete"
-        />
-        <h1 class="form--submit-text">Thank you!</h1>
-        <h3 class="form--submit-sub">We've added your card details</h3>
-        <button id="form--btn-continue" class="btn confirm--btn" type="submit">
-          Continue
-        </button>
-        
+      <div class="thanks-page col gap-2x hidden">
+        <figure>
+          <img
+            src="./images/icon-complete.svg"
+            alt="Complete"
+          />
+        </figure>
+        <div class="thanks-container col gap-3x">
+          <h1 class="thanks-page__text">Thank you!</h1>
+          <h3 class="thanks-page__subtext">We've added your card details</h3>
+          <button id="thanks-btn" class="btn thanks-btn" type="submit">
+            Continue
+          </button>
+        </div>
         <!-- <div class="attribution">
           Challenge by
           <a
@@ -119,7 +131,7 @@
           >. Coded by
           <a href="#">Dedric Smith</a>.
         </div> -->
-      </aside>
+      </section>
     </main>
   </body>
 </html>
